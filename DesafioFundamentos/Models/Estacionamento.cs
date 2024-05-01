@@ -17,26 +17,27 @@ namespace DesafioFundamentos.Models
         public void AdicionarVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para estacionar:");
-            var placa = readConsole();
+            var placa = ReadConsole();
             veiculos.Add(placa);
         }
 
         public void RemoverVeiculo()
         {
             Console.WriteLine("Digite a placa do veículo para remover:");
-            var placa = readConsole();
-
+            var placa = ReadConsole();
             if (veiculos.Any(x => x == placa))
             {
                 Console.WriteLine("Digite a quantidade de horas que o veículo permaneceu estacionado:");
-                var horas = Convert.ToDecimal(readConsole());
-                var valorTotal = (precoInicial + precoPorHora) * horas; 
+                var horas = Convert.ToDecimal(ReadConsole());
+                var valorTotal = (precoInicial + precoPorHora) * horas;
                 veiculos.Remove(placa);
-                Console.WriteLine($"O veículo {placa} foi removido e o preço total foi de: R$ {decimal.Floor(valorTotal)}.");
+                Console.WriteLine(
+                    $"O veículo {placa} foi removido e o preço total foi de: R$ {decimal.Floor(valorTotal)}.");
             }
             else
             {
-                Console.WriteLine("Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");
+                Console.WriteLine(
+                    "Desculpe, esse veículo não está estacionado aqui. Confira se digitou a placa corretamente");
             }
         }
 
@@ -56,7 +57,7 @@ namespace DesafioFundamentos.Models
             }
         }
 
-        private string readConsole()
+        private string ReadConsole()
         {
             bool inputValidadte = false;
             do
@@ -70,9 +71,9 @@ namespace DesafioFundamentos.Models
                 {
                     inputValidadte = true;
                     return input;
-
                 }
             } while (!inputValidadte);
+
             return null;
         }
     }
